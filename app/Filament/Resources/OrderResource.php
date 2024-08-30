@@ -3,10 +3,11 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\OrderResource\Pages;
+use App\Filament\Resources\OrderResource\RelationManagers\AddressRelationManager;
+// use Filament\Resources\OrderResource\RelationManagers\AddressRelationManager;
 use App\Filament\Resources\OrderResource\RelationManagers;
 use App\Models\Order;
 use App\Models\Product;
-
 use Filament\Forms;
 use Filament\Forms\Components\Group;
 use Filament\Forms\Components\Hidden;
@@ -26,9 +27,6 @@ use Filament\Tables\Columns\SelectColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Support\Number;
-
-
-use function Laravel\Prompts\select;
 
 class OrderResource extends Resource
 {
@@ -113,7 +111,6 @@ class OrderResource extends Resource
                             ->options([
                                 'standard' => 'Standard',
                                 'express' => 'Express'
-
                             ]),
 
                         Textarea::make('notes')
@@ -125,7 +122,7 @@ class OrderResource extends Resource
                             ->relationship()
                             ->schema([
 
-                                select::make('product_id')
+                                Select::make('product_id')
                                     ->relationship('product', 'name')
                                     ->searchable()
                                     ->preload()
@@ -136,7 +133,6 @@ class OrderResource extends Resource
                                     ->reactive()
                                     ->afterStateUpdated(fn($state, Set $set) => $set('unit_amount', Product::find($state)?->price ?? 0))
                                     ->afterStateUpdated(fn($state, Set $set) => $set('total_amount', Product::find($state)?->price ?? 0)),
-
 
                                 TextInput::make('quantity')
                                     ->required()
@@ -259,7 +255,7 @@ class OrderResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            AddressRelationManager::class
         ];
     }
 
