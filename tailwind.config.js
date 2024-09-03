@@ -8,7 +8,11 @@ export default {
   ],
   darkMode: 'class',
   theme: {
-    extend: {},
+    extend: {
+        backgroundImage: {
+            'landing_page': "url('/images/landing_page.png')",
+          }
+    },
   },
   plugins: [
     require('preline/plugin'),
