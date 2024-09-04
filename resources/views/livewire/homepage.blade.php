@@ -1,14 +1,14 @@
     <div class="w-full h-screen bg-cover  px-4 sm:px-6 lg:px-8 mx-auto" style="background-image: url('/images/svg.svg');">
         <div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8">
             <!-- Grid -->
-            <div class="py-18 grid md:grid-cols-2 gap-4 md:gap-8  md:items-center w-5/6 mx-auto items-center">
-                <div class="">
+            <div class="py-2 w-full mx-auto items-center">
+                <div class="ml-6 lg:w-1/2 lg:my-8 lg:py-16">
                     <h1
-                        class="block text-2xl font-extrabold text-gray-800 sm:text-4xl lg:text-5xl lg:leading-tight dark:text-white">
-                        E-commerce <span
-                            class="bg-gradient-to-r from-orange-500 via-red-500 to-yellow-500 inline-block text-transparent bg-clip-text">Devshop</span>
+                        class="block text-2xl font-extrabold text-[#0f430f] sm:text-4xl lg:text-5xl lg:leading-tight dark:text-white">
+                        E-commerce <span class="bg-[#0f430f] inline-block text-transparent bg-clip-text">Devshop</span>
                     </h1>
-                    <p class="mt-3 text-lg text-justify text-gray-800 dark:text-gray-400">Dapatkan penawaran eksklusif
+                    <p class="mt-3 text-lg font-semibold text-justify text-gray-800 dark:text-gray-400">Dapatkan
+                        penawaran eksklusif
                         dan update
                         terkini tentang produk-produk mewah dari Devshop. Belanja sekarang untuk menemukan fashion yang
                         sesuai
@@ -16,7 +16,7 @@
 
                     <!-- Buttons -->
                     <div class="mt-7 grid gap-3 w-full sm:inline-flex">
-                        <a class="py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg bg-gradient-to-r from-orange-500 to-yellow-400 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+                        <a class="py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-xl bg-[#0f430f] text-white hover:bg-green-700 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
                             href="/register">
                             Get started
                             <svg class="flex-shrink-0 w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24"
@@ -26,7 +26,7 @@
                             </svg>
                         </a>
 
-                        <a class="py-3 px-4 inline-flex justify-center items-center gap-x-2  text-md font-medium rounded-lg text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-white dark:hover:bg-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+                        <a class="py-3 px-4 inline-flex justify-center items-center gap-x-2  text-md font-medium rounded-lg text-gray-800  hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-white dark:hover:bg-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
                             style="text-decoration: underline; text-decoration-thickness: 2px; text-decoration-offset: 4px; "
                             href="/contact">
                             Contact Detail
@@ -35,7 +35,7 @@
                     <!-- End Buttons -->
 
                     <!-- Review -->
-                    <div class="mt-6 lg:mt-10 grid grid-cols-2 gap-x-5">
+                    <div class="mt-6 flex gap-x-10">
                         <!-- Review -->
                         <div class="py-5">
                             <div class="flex space-x-1">
@@ -111,12 +111,12 @@
 
                             </div>
 
-                            <p class="mt-3 text-sm text-gray-800 dark:text-gray-200">
-                                <span class="font-bold">4.6</span> /5 - from 12k reviews
+                            <p class="mt-3 text-sm text-gray-800 dark:text-gray-200 font-semibold">
+                                <span class="font-semibold">4.6</span> /5 - from 12k reviews
                             </p>
 
                             <div class="mt-5 ">
-                                <h2 class="text-lg font-bold leading-6 text-gray-800 dark:text-white ">GOOGLE</h2>
+                                <h2 class="text-lg font-bold leading-6 text-[#0f430f] dark:text-white ">GOOGLE</h2>
 
                             </div>
                         </div>
@@ -197,13 +197,13 @@
 
                             </div>
 
-                            <p class="mt-3 text-sm text-gray-800 dark:text-gray-200">
-                                <span class="font-bold">4.8</span> /5 - from 5k reviews
+                            <p class="mt-3 text-sm text-gray-800 dark:text-gray-200 font-semibold">
+                                <span class="font-semibold">4.8</span> /5 - from 5k reviews
                             </p>
 
                             <div class="mt-5">
                                 <!-- Star -->
-                                <h2 class="text-lg font-bold leading-6 text-gray-800 dark:text-white ">FORBES</h2>
+                                <h2 class="text-lg font-bold leading-6 text-[#0f430f] dark:text-white ">FORBES</h2>
                                 <!-- End Star -->
                             </div>
                         </div>
@@ -211,16 +211,7 @@
                     </div>
                     <!-- End Review -->
                 </div>
-                <!-- End Col -->
-
-                <div class="relative ms-4">
-                    <img class="w-[750px] h-auto rounded-md transparent" src="{{ asset('icon/hero.png') }}"
-                        alt="Image Description">
-                    <div
-                        class="absolute inset-0 -z-[1] bg-gradient-to-tr from-gray-200 via-white/0 to-white/0 w-full h-full rounded-md mt-4 -mb-4 me-4 -ms-4 lg:mt-6 lg:-mb-6 lg:me-6 lg:-ms-6 dark:from-slate-800 dark:via-slate-900/0 dark:to-slate-900/0">
-                    </div>
-                </div>
             </div>
         </div>
     </div>
-</div>
+    </div>
