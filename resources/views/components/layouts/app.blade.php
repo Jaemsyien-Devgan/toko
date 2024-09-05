@@ -11,11 +11,15 @@
 </head>
 
 <body class="bg-slate-200 dark:bg-slate-700">
-    @livewire('partials.navbar')
+    @if (!request()->routeIs('login'))
+        @livewire('partials.navbar')
+    @endif
     <main>
         {{ $slot }}
     </main>
-    @livewire('partials.footer')
+    @if (!request()->routeIs('login'))
+        @livewire('partials.footer')
+    @endif
     @livewireScripts
 </body>
 
