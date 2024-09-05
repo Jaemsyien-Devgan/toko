@@ -14,9 +14,6 @@
     @livewire('partials.navbar')
     <main>
         {{ $slot }}
-        @livewire('partials.categories')
-        @livewire('partials.brands')
-        @livewire('partials.customer-review')
     </main>
     @livewire('partials.footer')
     @livewireScripts
