@@ -236,141 +236,41 @@
 
 
                 {{-- card category --}}
-                <div class="p-1 flex flex-wrap items-center justify-center w-full ">
-                    <div
-                        class="flex-shrink-0 m-2 relative overflow-hidden bg-orange-500 rounded-lg max-w-xs shadow-lg">
-                        <svg class="absolute bottom-0 left-0 mb-8" viewBox="0 0 375 283" fill="none"
-                            style="transform: scale(1.5); opacity: 0.1;">
-                            <rect x="159.52" y="175" width="152" height="152" rx="8"
-                                transform="rotate(-45 159.52 175)" fill="white" />
-                            <rect y="107.48" width="152" height="152" rx="8"
-                                transform="rotate(-45 0 107.48)" fill="white" />
-                        </svg>
+                <div class="p-2 flex flex-nowrap overflow-x-auto w-full space-x-4  gap-2 items-start">
+                    @foreach ($categories as $category)
+                        @php
+                        $colors = ['bg-orange-500', 'bg-blue-500', 'bg-green-500', 'bg-red-500', 'bg-purple-500','bg-yellow-500','bg-pink-500','bg-teal-500','bg-indigo-500','bg-gray-500'];
+                            $randomColor = $colors[array_rand($colors)]
+                        @endphp
+                        <div class="flex-shrink-0 relative overflow-hidden {{$randomColor}} rounded-lg max-w-xs shadow-lg"
+                            wire:key="{{ $category->id }}">
+                            <svg class="absolute bottom-0 left-0 mb-8" viewBox="0 0 375 283" fill="none"
+                                style="transform: scale(1.5); opacity: 0.1;">
+                                <rect x="159.52" y="175" width="152" height="152" rx="8"
+                                    transform="rotate(-45 159.52 175)" fill="white" />
+                                <rect y="107.48" width="152" height="152" rx="8"
+                                    transform="rotate(-45 0 107.48)" fill="white" />
+                            </svg>
 
-                        {{-- judul --}}
-                        <div class="relative  text-white px-6 pb-6 mt-6">
-                            <span class="block font-bold text-xl -mb-1 px-3 items text-center ">Clothes</span>
-
-                        </div>
-
-                        {{-- Gambar --}}
-                        <div class="relative px-2 flex items-center justify-center h-56">
-                            <div class="block absolute w-48 h-48 bottom-0 left-0 -mb-24 ml-3"
-                                style="background: radial-gradient(black, transparent 60%); transform: rotate3d(0, 0, 1, 20deg) scale3d(1, 0.6, 1); opacity: 0.2;">
+                            {{-- judul --}}
+                            <div class="absolute z-10 w-full text-white sm:px-6 sm:pb-6 sm:mt-4 flex justify-center">
+                                <span
+                                    class="inline-block w-full mx-auto font-bold text-lg sm:text-xl -mb-1 px-3 items-center text-center ">{{ $category->name }}</span>
                             </div>
-                            <img class="relative w-52  object-contain " src="{{ asset('gambar/clothes.png') }}"
-                                alt="">
-                        </div>
 
-                    </div>
-
-                    {{-- card 2 --}}
-                    <div class="flex-shrink-0 m-2 relative overflow-hidden bg-pink-500 rounded-lg max-w-xs shadow-lg">
-                        <svg class="absolute bottom-0 left-0 mb-8" viewBox="0 0 375 283" fill="none"
-                            style="transform: scale(1.5); opacity: 0.1;">
-                            <rect x="159.52" y="175" width="152" height="152" rx="8"
-                                transform="rotate(-45 159.52 175)" fill="white" />
-                            <rect y="107.48" width="152" height="152" rx="8"
-                                transform="rotate(-45 0 107.48)" fill="white" />
-                        </svg>
-
-                        {{-- judul --}}
-                        <div class="relative  text-white px-6 pb-6 mt-6">
-                            <span class="block font-bold text-xl -mb-1 px-3 items text-center ">Clothes</span>
-
-                        </div>
-
-                        {{-- Gambar --}}
-                        <div class="relative px-2 flex items-center justify-center h-56">
-                            <div class="block absolute w-48 h-48 bottom-0 left-0 -mb-24 ml-3"
-                                style="background: radial-gradient(black, transparent 60%); transform: rotate3d(0, 0, 1, 20deg) scale3d(1, 0.6, 1); opacity: 0.2;">
+                            {{-- Gambar --}}
+                            <div class="relative px-2 flex items-center justify-center h-48 sm:h-72">
+                                <div class="block absolute w-32 h-32 sm:w-48 sm:h-48 bottom-0 left-0 -mb-20 sm:-mb-24 ml-3"
+                                    style="background: radial-gradient(black, transparent 60%); transform: rotate3d(0, 0, 1, 20deg) scale3d(1, 0.6, 1); opacity: 0.2;">
+                                </div>
+                                <img class="relative w-40 sm:w-52 sm:h-64 object-cover top-4"
+                                    src="{{ url('storage/' . $category->image) }}" alt="{{ $category->name }}">
                             </div>
-                            <img class="relative w-52  object-contain " src="{{ asset('gambar/clothes.png') }}"
-                                alt="">
                         </div>
-
-                    </div>
-
-                    {{-- card 2 --}}
-                    <div class="flex-shrink-0 m-2 relative overflow-hidden bg-green-500 rounded-lg max-w-xs shadow-lg">
-                        <svg class="absolute bottom-0 left-0 mb-8" viewBox="0 0 375 283" fill="none"
-                            style="transform: scale(1.5); opacity: 0.1;">
-                            <rect x="159.52" y="175" width="152" height="152" rx="8"
-                                transform="rotate(-45 159.52 175)" fill="white" />
-                            <rect y="107.48" width="152" height="152" rx="8"
-                                transform="rotate(-45 0 107.48)" fill="white" />
-                        </svg>
-
-                        {{-- judul --}}
-                        <div class="relative  text-white px-6 pb-6 mt-6">
-                            <span class="block font-bold text-xl -mb-1 px-3 items text-center ">Clothes</span>
-
-                        </div>
-
-                        {{-- Gambar --}}
-                        <div class="relative px-2 flex items-center justify-center h-56">
-                            <div class="block absolute w-48 h-48 bottom-0 left-0 -mb-24 ml-3"
-                                style="background: radial-gradient(black, transparent 60%); transform: rotate3d(0, 0, 1, 20deg) scale3d(1, 0.6, 1); opacity: 0.2;">
-                            </div>
-                            <img class="relative w-52  object-contain " src="{{ asset('gambar/clothes.png') }}"
-                                alt="">
-                        </div>
-
-                    </div>
-
-                    {{-- card 2 --}}
-                    <div class="flex-shrink-0 m-2 relative overflow-hidden bg-blue-500 rounded-lg max-w-xs shadow-lg">
-                        <svg class="absolute bottom-0 left-0 mb-8" viewBox="0 0 375 283" fill="none"
-                            style="transform: scale(1.5); opacity: 0.1;">
-                            <rect x="159.52" y="175" width="152" height="152" rx="8"
-                                transform="rotate(-45 159.52 175)" fill="white" />
-                            <rect y="107.48" width="152" height="152" rx="8"
-                                transform="rotate(-45 0 107.48)" fill="white" />
-                        </svg>
-
-                        {{-- judul --}}
-                        <div class="relative  text-white px-6 pb-6 mt-6">
-                            <span class="block font-bold text-xl -mb-1 px-3 items text-center ">Clothes</span>
-
-                        </div>
-
-                        {{-- Gambar --}}
-                        <div class="relative px-2 flex items-center justify-center h-56">
-                            <div class="block absolute w-48 h-48 bottom-0 left-0 -mb-24 ml-3"
-                                style="background: radial-gradient(black, transparent 60%); transform: rotate3d(0, 0, 1, 20deg) scale3d(1, 0.6, 1); opacity: 0.2;">
-                            </div>
-                            <img class="relative w-52  object-contain " src="{{ asset('gambar/clothes.png') }}"
-                                alt="">
-                        </div>
-
-                    </div>
-
-                    {{-- card 2 --}}
-                    <div class="flex-shrink-0 m-2 relative overflow-hidden bg-red-500 rounded-lg max-w-xs shadow-lg">
-                        <svg class="absolute bottom-0 left-0 mb-8" viewBox="0 0 375 283" fill="none"
-                            style="transform: scale(1.5); opacity: 0.1;">
-                            <rect x="159.52" y="175" width="152" height="152" rx="8"
-                                transform="rotate(-45 159.52 175)" fill="white" />
-                            <rect y="107.48" width="152" height="152" rx="8"
-                                transform="rotate(-45 0 107.48)" fill="white" />
-                        </svg>
-
-                        {{-- judul --}}
-                        <div class="relative  text-white px-6 pb-6 mt-6">
-                            <span class="block font-bold text-xl -mb-1 px-3 items text-center ">Clothes</span>
-
-                        </div>
-
-                        {{-- Gambar --}}
-                        <div class="relative px-2 flex items-center justify-center h-56">
-                            <div class="block absolute w-48 h-48 bottom-0 left-0 -mb-24 ml-3"
-                                style="background: radial-gradient(black, transparent 60%); transform: rotate3d(0, 0, 1, 20deg) scale3d(1, 0.6, 1); opacity: 0.2;">
-                            </div>
-                            <img class="relative w-52  object-contain " src="{{ asset('gambar/clothes.png') }}"
-                                alt="">
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
+
+
 
 
                 {{-- card product --}}
@@ -642,81 +542,20 @@
 
                 <!-- Grid of Brands -->
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-6 pt-4">
-                    <!-- Brand 1 -->
-                    <div class="bg-[#fff1f1] shadow rounded-lg p-4 flex items-center shadow-lg space-x-4">
-                        <img src="{{ asset('Merek/Gucci.png') }}" alt="Gucci" class="w-12 h-12 rounded-full">
-                        <div>
-                            <h2 class="text-lg font-semibold">Gucci</h2>
-                            <p class="text-sm text-gray-500">Delivery within 24 hours</p>
+                    @foreach ($brands as $brand)
+                        <!-- Brand 1 -->
+                        <div class="bg-[#fff1f1] shadow rounded-lg p-4 flex items-center shadow-lg space-x-4"
+                            wire:key="{{ $brand->id }}">
+                            <a href="#" class="flex items-center">
+                                <img src="{{ url('storage', $brand->image) }}" alt="{{ $brand->name }}"
+                                    class="w-12 h-12 rounded-full">
+                                <div class="mx-2">
+                                    <h2 class="text-lg font-semibold">{{ $brand->name }}</h2>
+                                    <p class="text-sm text-gray-500">Delivery within 24 hours</p>
+                                </div>
+                            </a>
                         </div>
-                    </div>
-
-                    <!-- Brand 2 (Active/Highlighted) -->
-                    <div class="bg-[#fff1f1] shadow rounded-lg p-4 flex items-center shadow-lg space-x-4 ">
-                        <img src="{{ asset('Merek/Prada.png') }}" alt="Prada" class="w-12 h-12 rounded-full">
-                        <div>
-                            <h2 class="text-lg font-semibold">Prada</h2>
-                            <p class="text-sm text-gray-500">Delivery within 24 hours</p>
-                        </div>
-                    </div>
-
-                    <!-- Brand 3 -->
-                    <div class="bg-[#fff1f1] shadow rounded-lg p-4 flex items-center shadow-lg space-x-4">
-                        <img src="{{ asset('Merek/Balenciaga.png') }}" alt="Balenciaga"
-                            class="w-12 h-12 rounded-full">
-                        <div>
-                            <h2 class="text-lg font-semibold">Balenciaga</h2>
-                            <p class="text-sm text-gray-500">Delivery within 24 hours</p>
-                        </div>
-                    </div>
-
-                    <!-- Brand 4 -->
-                    <div class="bg-[#fff1f1] shadow rounded-lg p-4 flex items-center shadow-lg space-x-4">
-                        <img src="{{ asset('Merek/Louis-Vuitton.jpg') }}" alt="Louis Vuitton"
-                            class="w-12 h-12 rounded-full ">
-                        <div>
-                            <h2 class="text-lg font-semibold">Louis Vuitton</h2>
-                            <p class="text-sm text-gray-500">Delivery within 24 hours</p>
-                        </div>
-                    </div>
-
-                    <!-- Brand 5 -->
-                    <div class="bg-[#fff1f1] shadow rounded-lg p-4 flex items-center shadow-lg space-x-4">
-                        <img src="{{ asset('Merek/off-white.png') }}" alt="Off White"
-                            class="w-12 h-12 rounded-full">
-                        <div>
-                            <h2 class="text-lg font-semibold">Off White</h2>
-                            <p class="text-sm text-gray-500">Delivery within 24 hours</p>
-                        </div>
-                    </div>
-
-                    <!-- Brand 6 -->
-                    <div class="bg-[#fff1f1] shadow rounded-lg p-4 flex items-center shadow-lg space-x-4">
-                        <img src="{{ asset('Merek/Dior.png') }}" alt="Dior" class="w-12 h-12 rounded-full">
-                        <div>
-                            <h2 class="text-lg font-semibold">Dior</h2>
-                            <p class="text-sm text-gray-500">Delivery within 24 hours</p>
-                        </div>
-                    </div>
-
-                    <!-- Brand 7 -->
-                    <div class="bg-[#fff1f1] shadow rounded-lg p-4 flex items-center shadow-lg space-x-4">
-                        <img src="{{ asset('Merek/Versace.png') }}" alt="Versace" class="w-12 h-12 rounded-full">
-                        <div>
-                            <h2 class="text-lg font-semibold">Versace</h2>
-                            <p class="text-sm text-gray-500">Delivery within 24 hours</p>
-                        </div>
-                    </div>
-
-                    <!-- Brand 8 -->
-                    <div class="bg-[#fff1f1] shadow rounded-lg p-4 flex items-center shadow-lg space-x-4">
-                        <img src="https://via.placeholder.com/50x50.png?text=Bevmo!" alt="Bevmo"
-                            class="w-12 h-12 rounded-full">
-                        <div>
-                            <h2 class="text-lg font-semibold">Bevmo!</h2>
-                            <p class="text-sm text-gray-500">Delivery within 24 hours</p>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
 

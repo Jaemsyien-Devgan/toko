@@ -9,7 +9,7 @@
                 <span></span>
             </div>
 
-            <a href="/login"
+            <a wire:navigate href="/login"
                 class="text-white bg-black hover:bg-black focus:ring-4 focus:ring-black font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 sm:mr-2 lg:mr-0 dark:bg-black dark:hover:bg-black focus:outline-none dark:focus:ring-black">Sign
                 In</a>
             <button data-collapse-toggle="mobile-menu-2" type="button"
@@ -29,22 +29,22 @@
             </button>
         </div>
         <div class="items-center justify-between w-full lg:flex lg:w-auto lg:order-1" id="mobile-menu-2">
-            <ul class="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
+            <ul class="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-6 lg:mt-0">
                 <li>
-                    <a href="/"
-                        class="block py-2 pl-3 pr-4 text-white bg-black rounded lg:bg-transparent lg:text-black lg:p-0 dark:text-white"
+                    <a wire:navigate href="/"
+                        class="font-bold {{request()->is('/') ? 'text-green-700' : 'text-gray-600'}} py-3 md:py-6 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
                         aria-current="page">Home</a>
                 </li>
                 <li>
-                    <a href="/categories"
-                        class="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-black lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">Categories</a>
+                    <a wire:navigate href="/categories"
+                        class="font-bold {{request()->is('categories') ? 'text-green-700' : 'text-gray-600'}}  py-3 md:py-6 dark:text-gray-400 dark:hover:text-gray-500 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">Categories</a>
                 </li>
                 <li>
-                    <a href="/products"
-                        class="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-black lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">Product</a>
+                    <a wire:navigate href="/products"
+                        class="font-bold {{request()->is('products') ? 'text-green-700' : 'text-gray-600'}} py-3 md:py-6 dark:text-gray-400 dark:hover:text-gray-500 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">Product</a>
                 </li>
                 <li>
-                    <a class="flex py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-black lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700"
+                    <a wire:navigate class="flex py-2  {{request()->is('cart') ? 'text-green-700' : 'text-gray-600'}} border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700"
                         href="/cart">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                             stroke="currentColor" class="flex-shrink-0 w-5 h-5 mr-1">

@@ -131,7 +131,7 @@
             style="background-image: url(https://images.unsplash.com/photo-1579451861283-a2239070aaa9?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1950&amp;q=80);">
             <div class="absolute bg-gradient-to-b from-blue-900 to-gray-900 opacity-75 inset-0 z-0"></div>
             <div class="absolute triangle  min-h-screen right-0 w-16" style=""></div>
-            <a href="https://codepen.io/uidesignhub" target="_blank" title="codepen aji"
+            <a wire:navigate href="https://codepen.io/uidesignhub" target="_blank" title="codepen aji"
                 class="flex absolute top-5 text-center text-gray-100 focus:outline-none"><img
                     src="/storage/avatars/njkIbPhyZCftc4g9XbMWwVsa7aGVPajYLRXhEeoo.jpg" alt="aji"
                     class="object-cover mx-auto w-8 h-8 rounded-full w-10 h-10">
@@ -232,7 +232,7 @@
                     </div>
                     <p class="flex flex-row items-center justify-center mt-10 text-center text-md text-gray-500 ">
                         <span>Already have an account? </span>
-                        <a href="/login"
+                        <a wire:navigate href="/login"
                             class="pl-1 text-indigo-400 hover:text-blue-500 no-underline hover:underline cursor-pointer transition ease-in duration-300"> Sign
                             In</a>
                     </p>
