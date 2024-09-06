@@ -11,15 +11,16 @@
 </head>
 
 <body class="bg-slate-200 dark:bg-slate-700">
-    @if (!request()->routeIs('login'))
+    @if (!request()->routeIs('login') && !request()->routeIs('register') && !request()->routeIs('reset'))
         @livewire('partials.navbar')
     @endif
     <main>
         {{ $slot }}
     </main>
-    @if (!request()->routeIs('login'))
+    @if (!request()->routeIs('login') && !request()->routeIs('register') && !request()->routeIs('reset'))
         @livewire('partials.footer')
     @endif
+
     @livewireScripts
 </body>
 
