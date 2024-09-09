@@ -20,7 +20,6 @@
     @if (!request()->routeIs('login') && !request()->routeIs('register') && !request()->routeIs('reset'))
         @livewire('partials.footer')
     @endif
-
     @livewireScripts
 </body>
 
