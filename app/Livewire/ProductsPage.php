@@ -2,8 +2,10 @@
 
 namespace App\Livewire;
 
+use App\Helpers\CartManagement;
 use App\Livewire\Partials\Brands;
 use App\Livewire\Partials\Categories;
+use App\Livewire\Partials\Navbar;
 use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Product;
@@ -32,6 +34,15 @@ class ProductsPage extends Component
     #[Url]
     public $price_range = 50000000;
 
+    #[Url]
+    public $sort = 'latest';
+
+
+    public function addToCart($product_id){
+        $total_count = CartManagement::addItemToCart($product_id);
+        $this->dispatch('UpdateCartCount', total_count: $total_count)->to(Navbar::class);
+    }
+
 public function render()
 {
     $productQuery = Product::query()->where('is_active', 1); // Ambil 6 produk per halaman
@@ -54,6 +65,14 @@ public function render()
 
     if ($this->price_range) {
         $productQuery->whereBetween('price', [0, $this->price_range]);
+    }
+
+    if ($this->sort == 'latest') {
+        $productQuery->latest();
+    }
+
+    if ($this->sort == 'price') {
+        $productQuery->orderBy('price');
     }
 
 
