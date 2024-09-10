@@ -242,8 +242,8 @@
                         $colors = ['bg-orange-500', 'bg-blue-500', 'bg-green-500', 'bg-red-500', 'bg-purple-500','bg-yellow-500','bg-pink-500','bg-teal-500','bg-indigo-500','bg-gray-500'];
                             $randomColor = $colors[array_rand($colors)]
                         @endphp
-                        <div class="flex-shrink-0 relative overflow-hidden {{$randomColor}} rounded-lg max-w-xs shadow-lg"
-                            wire:key="{{ $category->id }}">
+                        <a href="/products?selected_categories[0]={{ $category->id }}" class="flex-shrink-0 relative overflow-hidden {{$randomColor}} rounded-lg max-w-xs shadow-lg" wire:key="{{ $category->id }}">
+
                             <svg class="absolute bottom-0 left-0 mb-8" viewBox="0 0 375 283" fill="none"
                                 style="transform: scale(1.5); opacity: 0.1;">
                                 <rect x="159.52" y="175" width="152" height="152" rx="8"
@@ -266,7 +266,7 @@
                                 <img class="relative w-40 sm:w-52 sm:h-64 object-cover top-4"
                                     src="{{ url('storage/' . $category->image) }}" alt="{{ $category->name }}">
                             </div>
-                        </div>
+                        </a>
                     @endforeach
                 </div>
 
@@ -546,7 +546,7 @@
                         <!-- Brand 1 -->
                         <div class="bg-[#fff1f1] shadow rounded-lg p-4 flex items-center shadow-lg space-x-4"
                             wire:key="{{ $brand->id }}">
-                            <a href="#" class="flex items-center">
+                            <a href="/products?selected_brands[0]= {{ $brand->id }} " class="flex items-center">
                                 <img src="{{ url('storage', $brand->image) }}" alt="{{ $brand->name }}"
                                     class="w-12 h-12 rounded-full">
                                 <div class="mx-2">

@@ -5,8 +5,8 @@
 
 </style>
 
-<div class="antialiased bg-gray-200 w-full justify-around ">
-    <header class="lg:px-16 px-6 bg-white flex flex-wrap items-center lg:py-2 py-2 ">
+<div class="antialiased bg-gray-200 w-full justify-around transition-all duration-300">
+    <header class="lg:px-16 px-6 bg-white flex flex-wrap items-center lg:py-2 py-2">
         <div class="flex-1 flex justify-between items-center">
             <a href="#">
                 <svg width="32" height="36" viewBox="0 0 32 36" xmlns="http://www.w3.org/2000/svg">
@@ -25,7 +25,7 @@
         <input class="hidden" type="checkbox" id="menu-toggle" />
 
         <div class=" font-semibold hidden lg:flex lg:items-center lg:w-auto w-full" id="menu">
-            <nav class="lg:mr-96 ">
+            <nav class="lg:mr-96">
                 <ul class="lg:flex items-center justify-between text-base text-gray-600 pt-4 lg:pt-0 ">
                     <li><a wire:navigate class="lg:p-4 py-3 px-0 block border-b-2 border-transparent {{request()->is('/') ? 'text-green-700' : 'text-gray-600'}} hover:border-green-400"
                             href="/">Home</a></li>

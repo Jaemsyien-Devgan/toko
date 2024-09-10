@@ -10,7 +10,7 @@
                             @foreach ($categories as $category)
                                 <li class="mb-4" wire:key="{{ $category->id }}">
                                     <label for="{{ $category->slug }}" class="flex items-center dark:text-gray-400 ">
-                                        <input type="checkbox" id="{{ $category->slug }}" value="{{ $category->slug }}"
+                                        <input type="checkbox" wire:model.live="selected_categories" id="{{ $category->slug }}" value="{{ $category->id }}"
                                             class="w-4 h-4 mr-2">
                                         <span class="text-lg">{{ $category->name }}</span>
                                     </label>
@@ -26,7 +26,7 @@
                             @foreach ($brands as $brand)
                                 <li class="mb-4" wire:key="{{ $brand->id }}">
                                     <label for=" {{ $brand->slug }}" class="flex items-center dark:text-gray-300">
-                                        <input type="checkbox" id="{{ $brand->slug }}" value="{{ $brand->slug }}"
+                                        <input type="checkbox" wire:model.live="selected_brands" id="{{ $brand->slug }}" value="{{ $brand->id }}"
                                             class="w-4 h-4 mr-2">
                                         <span class="text-lg dark:text-gray-400">{{ $brand->name }}</span>
                                     </label>
@@ -40,14 +40,14 @@
                         <div class="w-16 pb-2 mb-6 border-b border-rose-600 dark:border-gray-400"></div>
                         <ul>
                             <li class="mb-4">
-                                <label for="" class="flex items-center dark:text-gray-300">
-                                    <input type="checkbox" class="w-4 h-4 mr-2">
-                                    <span class="text-lg dark:text-gray-400">In Stock</span>
+                                <label for="featured" class="flex items-center dark:text-gray-300">
+                                    <input type="checkbox" id="featured" wire:model.live="featured" value="1" class="w-4 h-4 mr-2">
+                                    <span class="text-lg dark:text-gray-400">Featured Products</span>
                                 </label>
                             </li>
                             <li class="mb-4">
-                                <label for="" class="flex items-center dark:text-gray-300">
-                                    <input type="checkbox" class="w-4 h-4 mr-2">
+                                <label for="on_sale" class="flex items-center dark:text-gray-300">
+                                    <input type="checkbox" id="on_sale" wire:model.live="on_sale" value="1" class="w-4 h-4 mr-2">
                                     <span class="text-lg dark:text-gray-400">On Sale</span>
                                 </label>
                             </li>
@@ -58,12 +58,13 @@
                         <h2 class="text-2xl font-bold dark:text-gray-400">Price</h2>
                         <div class="w-16 pb-2 mb-6 border-b border-rose-600 dark:border-gray-400"></div>
                         <div>
-                            <input type="range"
+                            <div class="text-sm font-semibold">{{ Number::currency($price_range, 'IDR')}}</div>
+                            <input type="range" wire:model.live ="price_range"
                                 class="w-full h-1 mb-4 bg-blue-100 rounded appearance-none cursor-pointer"
-                                max="500000" value="100000" step="100000">
-                            <div class="flex justify-between ">
-                                <span class="inline-block text-lg font-bold text-blue-400 ">&#8377; 1000</span>
-                                <span class="inline-block text-lg font-bold text-blue-400 ">&#8377; 500000</span>
+                                max="100000000" value="50000000" step="1000000">
+                            <div class="flex justify-between gap-2 ">
+                                <span class="text-sm inline-block font-bold text-blue-400 ">{{ Number::currency(1000000, 'IDR',)}}</span>
+                                <span class="inline-block text-sm font-bold text-blue-400 ">{{ Number::currency(100000000, 'IDR')}}</span>
                             </div>
                         </div>
                     </div>
@@ -122,15 +123,58 @@
 
                     </div>
                     <!-- pagination start -->
-                    <div class="flex justify-end mt-6">
-                        <nav aria-label="page-navigation">
-                            <ul class="flex list-style-none">
-                                {{ $products->links('pagination::tailwind') }}
+                    <div class="flex justify-end items-center mr-4 mt-8 gap-2">
+                        {{-- Previous Page Button --}}
+                        @if ($products->onFirstPage())
+                            <button class="px-4 py-2 rounded-lg bg-gray-300 text-gray-500 cursor-not-allowed" disabled>
+                                &lt;
+                            </button>
+                        @else
+                            <button wire:click="previousPage"
+                                class="px-4 py-2 rounded-lg bg-gray-300 hover:bg-gray-400">
+                                &lt;
+                            </button>
+                        @endif
+
+                        {{-- Numbered Pagination --}}
+                        @foreach (range(1, $products->lastPage()) as $page)
+                            @if ($page == $products->currentPage())
+                                <button
+                                    class="px-4 py-2 rounded-lg bg-white text-green-500 border border-1 border-green-500">
+                                    {{ $page }}
+                                </button>
+                            @elseif (
+                                $page === 1 ||
+                                    $page === $products->lastPage() ||
+                                    ($page >= $products->currentPage() - 1 && $page <= $products->currentPage() + 1))
+                                <button wire:click="gotoPage({{ $page }})"
+                                    class="px-4 py-2 rounded-lg bg-gray-300 hover:bg-gray-400">
+                                    {{ $page }}
+                                </button>
+                            @elseif (
+                                ($page === 2 && $products->currentPage() > 3) ||
+                                    ($page === $products->lastPage() - 1 && $products->currentPage() < $products->lastPage() - 2))
+                                <span
+                                    class="px-4 py-2 bg-white text-green-500 border border-1 border-green-500">...</span>
+                            @endif
+                        @endforeach
+
+                        {{-- Next Page Button --}}
+                        @if ($products->hasMorePages())
+                            <button wire:click="nextPage" class="px-4 py-2 rounded-lg bg-gray-300 hover:bg-gray-400">
+                                &gt;
+                            </button>
+                        @else
+                            <button class="px-4 py-2 rounded-lg bg-gray-300 text-gray-500 cursor-not-allowed" disabled>
+                                &gt;
+                            </button>
+                        @endif
                     </div>
+
                     <!-- pagination end -->
+                    </>
                 </div>
             </div>
-        </div>
     </section>
 
 </div>
