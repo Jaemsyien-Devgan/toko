@@ -3,6 +3,21 @@
         display: block;
     }
 
+    .dropdown-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        z-index: 10;
+        background-color: white;
+        border-radius: 0.375rem;
+        padding: 0.5rem;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .dropdown:hover .dropdown-menu {
+        display: block;
+    }
 </style>
 
 <div class="antialiased bg-gray-200 w-full justify-around transition-all duration-300">
@@ -27,26 +42,58 @@
         <div class=" font-semibold hidden lg:flex lg:items-center lg:w-auto w-full" id="menu">
             <nav class="lg:mr-96">
                 <ul class="lg:flex items-center justify-between text-base text-gray-600 pt-4 lg:pt-0 ">
-                    <li><a wire:navigate class="lg:p-4 py-3 px-0 block border-b-2 border-transparent {{request()->is('/') ? 'text-green-700' : 'text-gray-600'}} hover:border-green-400"
-                            href="/">Home</a></li>
-                    <li><a wire:navigate class="lg:p-4 py-3 px-0 block border-b-2 border-transparent {{request()->is('categories') ? 'text-green-700' : 'text-gray-600'}} hover:border-green-400"
-                            href="/categories">Categories</a></li>
-                    <li><a wire:navigate class="lg:p-4 py-3 px-0 block border-b-2 border-transparent {{request()->is('products') ? 'text-green-700' : 'text-gray-600'}} hover:border-green-400"
-                            href="/products">Product</a></li>
-                    <li><a wire:navigate class="lg:p-4 py-3 px-0 flex border-b-2 border-transparent {{request()->is('cart') ? 'text-green-700' : 'text-gray-600'}} hover:border-green-400 lg:mb-0 mb-2"
+                        <li><a wire:navigate
+                                class="lg:p-4 py-3 px-0 block border-b-2 border-transparent {{ request()->is('/') ? 'text-green-700' : 'text-gray-600' }} hover:border-green-400"
+                                href="/">Home</a></li>
+                        <li><a wire:navigate
+                                class="lg:p-4 py-3 px-0 block border-b-2 border-transparent {{ request()->is('categories') ? 'text-green-700' : 'text-gray-600' }} hover:border-green-400"
+                                href="/categories">Categories</a></li>
+                        <li><a wire:navigate
+                                class="lg:p-4 py-3 px-0 block border-b-2 border-transparent {{ request()->is('products') ? 'text-green-700' : 'text-gray-600' }} hover:border-green-400"
+                                href="/products">Product</a></li>
+                        <li>
+
+                            <a wire:navigate
+                            class="lg:p-4 py-3 px-0 flex border-b-2 border-transparent {{ request()->is('cart') ? 'text-green-700' : 'text-gray-600' }} hover:border-green-400 lg:mb-0 mb-2"
                             href="/cart">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="flex-shrink-0 w-5 h-5 mr-1">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007ZM8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm7.5 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke-width="1.5" stroke="currentColor" class="flex-shrink-0 w-5 h-5 mr-1">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007ZM8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm7.5 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
                             </svg>
                             Cart
-                            <span class="ml-1 py-0.5 px-1.5 rounded-full text-xs font-medium bg-green-50 border border-green-200 text-green-600">{{ $total_count }}</span>
-                        </a></li>
+                            <span
+                                class="ml-1 py-0.5 px-1.5 rounded-full text-xs font-medium bg-green-50 border border-green-200 text-green-600">{{ $total_count }}</span>
+                        </a>
+                            
+                        </li>
                 </ul>
             </nav>
-            <a wire:navigate href="/login" class="text-gray-600 lg:p-4 block border-b-2 border-transparent hover:border-green-400 lg:mb-0 mb-2 font-semibold lg:ml-4 flex items-center justify-start lg:mb-0 mb-4 pointer-cursor">
+            @guest
+                <a wire:navigate href="/login"
+                    class="text-gray-600 lg:p-4 block border-b-2 border-transparent hover:border-green-400 lg:mb-0 mb-2 font-semibold lg:ml-4 flex items-center justify-start lg:mb-0 mb-4 pointer-cursor">
                     Login
-            </a>
+                </a>
+            @endguest
         </div>
-        </div>
-        </div>
+
+        @auth
+            <div class="dropdown relative">
+                <button type="button" class="flex items-center w-full text-gray-500 hover:text-gray-400 font-medium">
+                    {{ auth()->user()->name }}
+                    <svg class="ms-2 w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="m6 9 6 6 6-6" />
+                    </svg>
+                </button>
+                <!-- Dropdown Menu -->
+                <div class="dropdown-menu right-0 mt-2 w-48 bg-white shadow-lg rounded-lg">
+                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">My Orders</a>
+                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">My Account</a>
+                    <a href="/logout" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Logout</a>
+                </div>
+            </div>
+        @endauth
+    </header>
 </div>
