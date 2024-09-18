@@ -65,7 +65,7 @@
                             <span
                                 class="ml-1 py-0.5 px-1.5 rounded-full text-xs font-medium bg-green-50 border border-green-200 text-green-600">{{ $total_count }}</span>
                         </a>
-                            
+
                         </li>
                 </ul>
             </nav>
@@ -88,10 +88,10 @@
                     </svg>
                 </button>
                 <!-- Dropdown Menu -->
-                <div class="dropdown-menu right-0 mt-2 w-48 bg-white shadow-lg rounded-lg">
-                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">My Orders</a>
-                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">My Account</a>
-                    <a href="/logout" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Logout</a>
+                <div  class="dropdown-menu right-0 mt-2 w-48 bg-white shadow-lg rounded-lg">
+                    <a wire:navigate href="/my-orders" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">My Orders</a>
+                    <a wire:navigate href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">My Account</a>
+                    <a wire:navigate href="/logout" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Logout</a>
                 </div>
             </div>
         @endauth
